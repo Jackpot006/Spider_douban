@@ -19,22 +19,6 @@ def get_one_page(url,headers):
         return None
 
 def parse_one_page(html):
-    # pattern = re.compile('.*?"rating":\["(.*?)",.*?"rank":(\d+).*?"cover_url":"(.*?)".*?"id":"(.*?)".*?"types":(.*?)"regions":(.*?)title":"(.*?)".*?"url":"(.*?)".*?"release_date":"(.*?)".*?"vote_count":(.*?),"score".*?"actors":(.*?),"is_watched":false.*?',re.S)
-    # items = re.findall(pattern,html)
-    # for item in items:
-    #     yield {
-    #         'ratings':item[0].strip(),
-    #         'rank':item[1].strip(),
-    #         'img':item[2].replace('\\','').strip(),
-    #         'id':item[3].strip(),
-    #         'types':item[4].replace('[','').replace(']','').replace('"','').replace(',',' ').strip(),
-    #         'regions':item[5].replace('[','').replace(']','').replace('"','').replace(',',' ').strip(),
-    #         'title':item[6].strip(),
-    #         'url':item[7].replace('\\','').strip(),
-    #         'date':item[8].strip(),
-    #         'comments':item[9].strip(),
-    #         'actors':item[10].replace('[','').replace(']','').replace('"','').replace(',',' ').strip()
-    #     }
     soup = BeautifulSoup(html, 'lxml')
     title = soup.select('#content > div.sreach_div > div:nth-child(1) > h3 > a')
     for t in title:
